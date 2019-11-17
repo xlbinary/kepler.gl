@@ -29,8 +29,8 @@ import {extent} from 'd3-array';
  * @returns {array} domain
  */
 export function getQuantileDomain(data, valueAccessor, sortFunc) {
-  const values =
-    typeof valueAccessor === 'function' ? data.map(valueAccessor) : data;
+  const values = typeof valueAccessor === 'function'
+    ? data.map(valueAccessor) : data;
 
   return values.filter(notNullorUndefined).sort(sortFunc);
 }

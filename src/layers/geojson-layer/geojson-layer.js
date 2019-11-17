@@ -426,12 +426,7 @@ export default class GeoJsonLayer extends Layer {
         ...layerProps,
         id: this.id,
         idx,
-        data: data.data,
-        getFillColor: data.getFillColor,
-        getLineColor: data.getLineColor,
-        getLineWidth: data.getLineWidth,
-        getRadius: data.getRadius,
-        getElevation: data.getElevation,
+        ...data,
         // highlight
         pickable: true,
         highlightColor: HIGHLIGH_COLOR_3D,

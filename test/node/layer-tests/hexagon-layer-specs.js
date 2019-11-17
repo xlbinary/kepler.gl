@@ -100,10 +100,12 @@ test('#HexagonLayer -> formatLayerData', async t => {
           expectedLayerData.data,
           'should format correct hexagon layerData'
         );
+
         t.ok(
           typeof layerData.getPosition === 'function',
           'should have getPosition'
         );
+
         t.deepEqual(
           layerData.getPosition(layerData.data[0]),
           [31.2590542, 29.9900937],
@@ -151,7 +153,7 @@ test('#HexagonLayer -> formatLayerData', async t => {
         t.deepEqual(
           Object.keys(layerData),
           ['data', 'getPosition', 'getColorValue'],
-          'layerData should have 2 keys'
+          'layerData should have 3 keys'
         );
         t.deepEqual(
           layerData.data,

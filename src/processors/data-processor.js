@@ -272,7 +272,13 @@ export function getFieldsFromData(data, fieldOrder) {
   // add a check for epoch timestamp
   const metadata = Analyzer.computeColMeta(
     data,
-    [{regex: /.*geojson|all_points/g, dataType: 'GEOMETRY'}],
+    [
+      {regex: /.*geojson|all_points/g, dataType: 'GEOMETRY'},
+
+      // s2 token
+      {regex: /token/g, dataType: 'STRING'},
+      {regex: /s2_token/g, dataType: 'STRING'}
+    ],
     {ignoredDataTypes: IGNORE_DATA_TYPES}
   );
 

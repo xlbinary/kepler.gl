@@ -26,6 +26,9 @@ import EnhancedColumnLayer from 'deckgl-layers/column-layer/enhanced-column-laye
 import {getVertices, getCentroid, idToPolygonGeo, h3IsValid} from './h3-utils';
 import H3HexagonLayerIcon from './h3-hexagon-layer-icon';
 import {CHANNEL_SCALES, HIGHLIGH_COLOR_3D} from 'constants/default-settings';
+import {hexToRgb} from 'utils/color-utils';
+
+const DEFAULT_LINE_SCALE_VALUE = 8;
 
 export const HEXAGON_ID_FIELDS = {
   hex_id: ['hex_id', 'hexagon_id', 'h3_id']
@@ -43,16 +46,6 @@ export const HexagonIdVisConfigs = {
   coverageRange: 'coverageRange',
   elevationScale: 'elevationScale'
 };
-
-function hexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-
-  const r = parseInt(result[1], 16);
-  const g = parseInt(result[2], 16);
-  const b = parseInt(result[3], 16);
-
-  return [r, g, b];
-}
 
 export default class HexagonIdLayer extends Layer {
   constructor(props) {
@@ -204,7 +197,6 @@ export default class HexagonIdLayer extends Layer {
       ? d => this.getEncodedChannelValue(coScale, d.data, coverageField, 0)
       : 1;
 
-    // const layerData = {
     return {
       data,
       getElevation,
@@ -319,7 +311,7 @@ export default class HexagonIdLayer extends Layer {
               id: `${this.id}-hovered`,
               data: [idToPolygonGeo(objectHovered)],
               getLineColor: config.highlightColor,
-              lineWidthScale: 8 * zoomFactor
+              lineWidthScale: DEFAULT_LINE_SCALE_VALUE * zoomFactor
             })
           ]
         : [])
