@@ -19,13 +19,11 @@
 // THE SOFTWARE.
 
 /* eslint-disable guard-for-in */
-import {experimental, AGGREGATION_OPERATION} from '@deck.gl/aggregation-layers';
+import {_BinSorter as BinSorter, AGGREGATION_OPERATION} from '@deck.gl/aggregation-layers';
 import {console as Console} from 'global/window';
 
 import {aggregate} from 'utils/aggregate-utils';
 import {AGGREGATION_TYPES, SCALE_FUNC} from 'constants/default-settings';
-
-const {BinSorter} = experimental;
 
 export const DECK_AGGREGATION_MAP = {
   [AGGREGATION_OPERATION.SUM]: AGGREGATION_TYPES.sum,
